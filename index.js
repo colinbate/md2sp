@@ -8,6 +8,13 @@ var formatter = require('./lib/formatter');
 var urlChecker = require('./lib/urlchecker');
 var path = require('path');
 
+var toStr = function (val) {
+  if (val == null) {
+    return '';
+  }
+  return '' + val;
+};
+
 var savePostFile = function (meta, payload, config, filename) {
   var metaStr, content, update = false;
   if (!meta.date) {
@@ -18,7 +25,7 @@ var savePostFile = function (meta, payload, config, filename) {
     meta.postid = config.postid;
     update = true;
   }
-  if (update) {
+  if (update && filename) {
     metaStr = tomlify(meta, {delims: config.frontmatter.separator});
     content = metaStr + payload;
     return files.writeAsync(filename, content);
@@ -112,13 +119,63 @@ var getBlog = function (blogConfig) {
   return blog;
 };
 
+var makeApiCall = function (edit, blog, payload) {
+  var c = blog.config,
+      def = Q.defer(),
+      method = edit ? 'editPost' : 'newPost',
+      apiId = edit ? payload.postid : blog.blogid;
+  if (edit && typeof(apiId) === 'undefined') {
+    def.reject(new Error('No postid present to edit.'));
+    return def.promise;
+  }
+  // blog[method]('' + apiId, c.apiUser, c.apiPass, payload, true, function (err, data) {
+  //   var msg = 'No data!';
+  //   if (err || !data) {
+  //     if (err && err.faultString) {
+  //       msg = err.faultString;
+  //     }
+  //     def.reject(new Error('Could not post: ' + msg));
+  //     return;
+  //   }
+  //   def.resolve({
+  //     filename: false,
+  //     success: !!toStr(data),
+  //     id: toStr(payload.postid) || toStr(data),
+  //     date: payload.dateCreated
+  //   });
+  // });
+  def.resolve({
+      filename: false,
+      success: true,
+      id: toStr(payload.postid) || toStr(123),
+      date: payload.dateCreated
+    });
+  return def.promise;
+};
+
+var parse = function (doc, edit, blog) {
+  return parseContent(doc, blog.config)
+    .then(makeApiCall.bind(null, edit, blog));
+};
+
+var post = function (doc, edit) {
+  return config.get()
+    .then(createBlogConfig)
+    .then(getBlog)
+    .then(parse.bind(null, doc, edit))
+};
+
 var newPost = function (filename) {
   return Q.all([parseFile(filename), config.get().then(createBlogConfig).then(getBlog)]).then(function (all) {
     var c = all[1].config,
         def = Q.defer();
     all[1].newPost(c.blogid, c.apiUser, c.apiPass, all[0], true, function (err, data) {
+      var msg = 'No data!';
       if (err || !data) {
-        def.reject(new Error('Could not create new post: ' + err.faultString));
+        if (err && err.faultString) {
+          msg = err.faultString;
+        }
+        def.reject(new Error('Could not create new post: ' + msg));
         return;
       }
       def.resolve({filename: filename, id: data});
@@ -233,6 +290,7 @@ module.exports = {
   parseFile: parseFile,
   newPost: newPost,
   editPost: editPost,
+  post: post,
   addPostId: addPostId,
   setup: setup
 };
