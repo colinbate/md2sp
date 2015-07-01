@@ -23,6 +23,9 @@ var handlers = {
       req.on('end', function () {
         md2sp.post(body, edit).then(function (r) {
           res.end(JSON.stringify(r));
+        }).fail(function (err) {
+          res.statusCode = 400;
+          res.end(JSON.stringify(err, ['message', 'arguments', 'type', 'name']));
         });
       });
     } else {
