@@ -54,12 +54,4 @@ If you run the tool with the `new` command, it will create a new post file. You 
 
 ## To Do
 
-* Handle deleting posts
-* ~~Automatically add `postid` to newly added files~~
-* ~~Create a post file generator~~
-* Support uploading images
-* ~~Save current date back to date-less posts~~
-* ~~Detect existing config files during setup~~
-* Add support for proxies
-* Add tests!
-
+Tracking here: https://bitbucket.org/colinbate/md2sp/issues
