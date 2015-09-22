@@ -1,8 +1,4 @@
 
-let slice = Function.prototype.call.bind(Array.prototype.slice);
-
-export { slice };
-
 export function isPromise(obj) {
   return obj != null && typeof obj.then === 'function';
 }
