@@ -1,5 +1,5 @@
 import Document from './tuberia-document';
-import MetaWeblogApi from '../metaweblog-api';
+import MetaWeblogApi from './metaweblog-api';
 
 class MetaWeblogPostModule {
   constructor(editFn, optsLocator) {

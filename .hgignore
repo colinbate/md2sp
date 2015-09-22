@@ -3,4 +3,5 @@ syntax: glob
 node_modules
 private
 coverage
+lib
 *.sublime-workspace

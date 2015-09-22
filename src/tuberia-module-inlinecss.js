@@ -1,5 +1,5 @@
 import * as file from './files';
-import mixtur from '../ext/mixtur';
+import mixtur from './ext/mixtur';
 
 class InlineCssModule {
   constructor(locator) {
