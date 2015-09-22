@@ -1,5 +1,5 @@
 import Document from './tuberia-document';
-import { slice, forcePromise } from './utils';
+import { forcePromise } from './utils';
 
 let pipelineCount = 0;
 let handleList = function handleList(docs, ctx, mods) {
@@ -37,7 +37,7 @@ class Pipeline {
   }
 
   execute(docs, ctx) {
-    let mods = slice(this.modules);
+    let mods = this.modules;
     if (ctx.debug) {
       console.log('Starting', this.name, 'pipeline...');
     }
@@ -67,8 +67,7 @@ class Pipeline {
   }
 }
 
-export default function pipeline() {
-  let args = slice(arguments);
+export default function pipeline(...args) {
   let name;
   if (args.length && typeof args[0] === 'string') {
     name = args.shift();
