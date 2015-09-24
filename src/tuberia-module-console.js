@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import * as ask from './ask';
 
 class ParseArgumentsModule {
   constructor(conf) {
@@ -14,4 +15,12 @@ class ParseArgumentsModule {
 
 export function parseArguments(confFn) {
   return new ParseArgumentsModule(confFn);
+}
+
+// --------------------------------------
+
+class ConsolePromptModule {
+	constructor() {
+		
+	}
 }

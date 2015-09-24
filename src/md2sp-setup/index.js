@@ -2,10 +2,17 @@ import pipeline from '../tuberia';
 import dump from '../tuberia-module-dump';
 
 export default function setup() {
-// check config
-// if config warn about overwriting
+// [] check config
+// readConfig().optional()
+// [] if config warn about overwriting
+// where((d,c) => c.config.whatever), print('...'))
 // "Do you want to setup a blog here?" (No exit)
+// yesNo('setupHere', 'Do you...')
+// stop('Quitting').when(d => !d.meta.setupHere)
 // "Is it a Sharepoint blog?"
+// yesNo('isSharepoint', 'Is it...'),
+//
+// 
 // sharepoint ? 'Enter blog URL:' : 'Enter metaweblog endpoint:'
 // Normalize SP Url
 // Url, username, password, style sheet
