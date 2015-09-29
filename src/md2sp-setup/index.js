@@ -1,30 +1,28 @@
 import pipeline from '../tuberia';
 import dump from '../tuberia-module-dump';
 
+let checkAccess = pipeline('Check Access',
+  //resolveUrl(),
+  //metaweblogGetUsersBlogs()
+);
+
 export default function setup() {
-// [] check config
-// readConfig().optional()
-// [] if config warn about overwriting
-// where((d,c) => c.config.whatever), print('...'))
-// "Do you want to setup a blog here?" (No exit)
-// yesNo('setupHere', 'Do you...')
+// readConfig('md2sp.toml', toml()).optional(),
+// where((d,c) => c.config.url), print('There is already a blog here!')),
+// yesNo('Do you want to setup a blog here?').key('setupHere')
 // stop('Quitting').when(d => !d.meta.setupHere)
-// "Is it a Sharepoint blog?"
-// yesNo('isSharepoint', 'Is it...'),
-//
-// 
-// sharepoint ? 'Enter blog URL:' : 'Enter metaweblog endpoint:'
-// Normalize SP Url
-// Url, username, password, style sheet
-// Save password?
-// Need cert? Enter cert (can be blank for none)
-// Setup Context (Set no NTLM, load cert, etc)
-// Check URL (redirects)
-// API Call: getUsersBlogs
-// If fail:
-//   Update Context (Set NTLM)
-//   API Call: getUsersBlogs
-//   If fail: abort
-// Strip password if not saving it
-// Save config info to config file
+// yesNo('Is it a sharepoint blog?').key('isSharepoint'),
+// askString(d => d.meta.isSharepoint ? 'Enter blog URL:' : 'Enter metaweblog endpoint:').key('url'),
+// normalizeUrl(),
+// askString('Username:'),
+// askPassword('Password:'),
+// askString('Stylesheet (blank for none):').key('cssFile'),
+// askString('Enter cert file (blank for none):').key('cert'),
+// yesNo('Save password to config file (will be plain text)').key('savePwd'),
+// // Setup Context (Set no NTLM, load cert, etc)
+// setupContext(false), // no NTLM
+// checkAccess(),
+// where(d => !d.meta.blogName, setupContext(true), checkAccess()),
+// stop('Could not fetch blog information.').when(d => !d.meta.blogName),
+// writeConfig('md2sp.toml', removeSensitiveInfo(), toml.generate())
 }
