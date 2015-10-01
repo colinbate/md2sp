@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { denode } from './utils';
+import pify from 'pify';
 
 let hasSafeNum = /-(\d+)$/;
 
+let pifyRead = pify(fs.readFile);
+let pifyWrite = pify(fs.writeFile);
 export function read(filename) {
-  return denode(fs.readFile, filename, {encoding: 'utf8'});
+  return pifyRead(filename, {encoding: 'utf8'});
 }
 
 let getNextFilename = function (filename) {
@@ -21,7 +23,7 @@ let getNextFilename = function (filename) {
 
 export function write(filename, data, safe) {
   var flag = safe ? 'wx' : 'w';
-  return denode(fs.writeFile, filename, data, {encoding: 'utf8', flag: flag});
+  return pifyWrite(filename, data, {encoding: 'utf8', flag: flag});
 }
 
 export function writeSafely(filename, data) {

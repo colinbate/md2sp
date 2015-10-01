@@ -1,4 +1,4 @@
-import Document from './tuberia-document';
+import Document from 'tuberia-core';
 import MetaWeblogApi from './metaweblog-api';
 
 class MetaWeblogPostModule {

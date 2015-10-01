@@ -1,8 +1,7 @@
 import * as file from './files';
 import path from 'path';
 import pathIsAbsolute from 'path-is-absolute';
-import Document from './tuberia-document';
-import pipeline from './tuberia';
+import pipeline, { Document } from 'tuberia-core';
 
 function findConfig(dir, filename, required, ctx) {
   var checkFile = path.join(dir, filename);

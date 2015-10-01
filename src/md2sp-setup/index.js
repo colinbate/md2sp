@@ -1,7 +1,7 @@
-import pipeline from '../tuberia';
+import pipeline from 'tuberia-core';
 import dump from '../tuberia-module-dump';
 
-let checkAccess = pipeline('Check Access',
+let checkAccess = pipeline('Check Access'
   //resolveUrl(),
   //metaweblogGetUsersBlogs()
 );

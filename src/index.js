@@ -4,15 +4,16 @@ import makePost from './md2sp-post';
 //import generator from './md2sp-generator';
 //import setup from './md2sp-setup';
 //import { RunMode } from './md2sp-common';
-import pipeline from './tuberia';
+import pipeline from 'tuberia-core';
+import util from 'util';
 
 let app = pipeline('App',
   init(),
   makePost()
 );
-let debug = false;
+let debug = true;
 app.run({}, {debug}).catch(function (err) {
-  console.log('ERROR:', err);
+  console.log('ERROR:', util.inspect(err));
 });
 
 // let app = pipeline('App'

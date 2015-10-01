@@ -1,5 +1,5 @@
-import { prompt } from 'prompt';
-import { denode } from './utils';
+import prompt from 'prompt';
+import pify from 'pify';
 
 prompt.message = '';
 prompt.delimiter = '';
@@ -12,15 +12,12 @@ function pick (field) {
   };
 }
 
+let forMultiple = pify(::prompt.get);
+let question = pify(::prompt.confirm);
+
 // ======= API =========
 
-export function forMultiple(specs) {
-  return denode(::prompt.get, specs);
-}
-
-export function question(question) {
-  return denode(::prompt.confirm, question);
-}
+export { forMultiple, question };
 
 export function forString(label) {
   return Promise.resolve([{

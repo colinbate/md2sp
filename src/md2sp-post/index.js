@@ -1,4 +1,4 @@
-import pipeline from '../tuberia';
+import pipeline from 'tuberia-core';
 import dump from '../tuberia-module-dump';
 import { frontmatter } from '../tuberia-module-core';
 import { readFiles } from '../tuberia-module-io';
@@ -21,7 +21,7 @@ export default function makePost() {
     markdown(),
     inlineCss((d,c) => d.meta.cssFile || c.config.cssFile),
     adaptDate(),
-    metaweblogPost(),
+    //metaweblogPost(),
     where(x => x.meta.isNew, saveResults(getFrontmatter, toml.generate('+++'))),
     printResults()
   );

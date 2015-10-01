@@ -1,4 +1,4 @@
-import pipeline from '../tuberia';
+import pipeline from 'tuberia-core';
 import { parseArguments } from '../tuberia-module-console';
 import readConfig from '../tuberia-module-config';
 import toml from '../tuberia-module-toml';

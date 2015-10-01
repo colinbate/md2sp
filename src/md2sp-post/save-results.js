@@ -1,5 +1,4 @@
-import pipeline from '../tuberia';
-import Document from '../tuberia-document';
+import pipeline, { Document } from 'tuberia-core';
 import * as file from '../files';
 
 class SaveResultsModule {
