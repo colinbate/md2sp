@@ -1,4 +1,4 @@
-import pipeline from '../tuberia';
+import pipeline from 'tuberia-core';
 import dump from '../tuberia-module-dump';
 import { frontmatter } from '../tuberia-module-core';
 import markdown from '../tuberia-module-markdown';

@@ -1,7 +1,7 @@
 import * as file from './files';
 import path from 'path';
 import pathIsAbsolute from 'path-is-absolute';
-import Document from './tuberia-document';
+import { Document } from 'tuberia-core';
 
 class ReadFilesModule {
   constructor(search) {

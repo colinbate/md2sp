@@ -1,4 +1,4 @@
-import pipeline from './tuberia';
+import pipeline from 'tuberia-core';
 
 let condPipe = function (requireFn, selector, ...mods) {
   if (typeof selector !== 'function' && requireFn) {
