@@ -3,7 +3,7 @@ import dump from '../tuberia-module-dump';
 import { frontmatter } from '../tuberia-module-core';
 import { readFiles } from '../tuberia-module-io';
 import markdown from '../tuberia-module-markdown';
-import toml from '../tuberia-module-toml';
+import toml from 'tuberia-toml-module';
 import groupMeta from '../tuberia-module-groupmeta';
 import inlineCss from '../tuberia-module-inlinecss';
 import metaweblogPost from '../tuberia-module-metaweblog';

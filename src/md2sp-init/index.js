@@ -1,7 +1,7 @@
 import pipeline from 'tuberia-core';
 import { parseArguments } from '../tuberia-module-console';
 import readConfig from '../tuberia-module-config';
-import toml from '../tuberia-module-toml';
+import toml from 'tuberia-toml-module';
 import dump from '../tuberia-module-dump';
 import setupContext from './setup-context';
 
