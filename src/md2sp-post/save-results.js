@@ -1,5 +1,5 @@
 import pipeline, { Document } from 'tuberia-core';
-import * as file from '../files';
+import * as file from 'file-oath';
 
 class SaveResultsModule {
   constructor(parser, mods) {

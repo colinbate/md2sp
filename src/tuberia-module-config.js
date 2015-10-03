@@ -1,4 +1,4 @@
-import * as file from './files';
+import * as file from 'file-oath';
 import path from 'path';
 import pathIsAbsolute from 'path-is-absolute';
 import pipeline, { Document } from 'tuberia-core';
