@@ -1,5 +1,4 @@
 import pipeline from 'tuberia-core';
-import dump from '../tuberia-module-dump';
 
 let checkAccess = pipeline('Check Access'
   //resolveUrl(),
