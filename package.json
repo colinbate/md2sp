@@ -31,6 +31,7 @@
     "async": "~0.2.9",
     "cheerio": "~0.12.1",
     "css-parse": "~1.5.2",
+    "file-oath": "^1.0.0",
     "highlight.js": "^8.4.0",
     "httpreq": "~0.3.4",
     "kew": "^0.4.0",

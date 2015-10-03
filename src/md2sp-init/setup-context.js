@@ -1,7 +1,7 @@
 import { RunMode } from '../md2sp-common';
 import pathIsAbsolute from 'path-is-absolute';
 import path from 'path';
-import * as file from '../files';
+import * as file from 'file-oath';
 
 function loadCertFile(ctx, docs) {
   let certPath = path.join(ctx.configFolder, ctx.config.certFile);

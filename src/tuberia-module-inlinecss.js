@@ -1,4 +1,4 @@
-import * as file from './files';
+import * as file from 'file-oath';
 import mixtur from './ext/mixtur';
 
 class InlineCssModule {
