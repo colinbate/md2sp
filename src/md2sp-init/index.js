@@ -1,5 +1,5 @@
 import pipeline from 'tuberia-core';
-import { parseArguments } from '../tuberia-module-console';
+import {args} from 'tuberia-commandline-module';
 import readConfig from '../tuberia-module-config';
 import toml from 'tuberia-toml-module';
 import setupContext from './setup-context';
@@ -10,7 +10,7 @@ let configureArguments = function (yargs) {
 
 export default function init() {
   return pipeline('Init',
-    parseArguments(configureArguments),
+    args(configureArguments),
     readConfig('md2sp.toml', toml()).optional(),
     setupContext()
   );

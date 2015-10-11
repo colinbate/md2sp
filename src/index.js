@@ -14,6 +14,9 @@ let app = pipeline('App',
 let debug = true;
 app.run({}, {debug}).catch(function (err) {
   console.log('ERROR:', util.inspect(err));
+  if (debug) {
+  	console.log(err.stack);
+  }
 });
 
 // let app = pipeline('App'

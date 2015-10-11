@@ -15,7 +15,7 @@ function loadCertFile(ctx, docs) {
 
 class SetupContextModule {
   execute(docs, ctx) {
-    if (ctx.config._.length === 1) {
+    if (ctx.argv._.length === 1) {
       ctx.runMode = RunMode.makePost;
     }
     ctx.apiOptions = {
