@@ -1,6 +1,6 @@
 import pipeline from 'tuberia-core';
 import {args} from 'tuberia-commandline-module';
-import readConfig from '../tuberia-module-config';
+import {readConfig} from 'tuberia-io-module';
 import toml from 'tuberia-toml-module';
 import setupContext from './setup-context';
 

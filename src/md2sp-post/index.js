@@ -1,13 +1,13 @@
 import pipeline from 'tuberia-core';
-import { frontmatter } from '../tuberia-module-core';
-import { readFiles } from '../tuberia-module-io';
+import { frontmatter } from 'tuberia-metadata-module';
+import { readFiles } from 'tuberia-io-module';
 import markdown from 'tuberia-markdown-module';
 import toml from 'tuberia-toml-module';
-import groupMeta from '../tuberia-module-groupmeta';
-import inlineCss from '../tuberia-module-inlinecss';
-import metaweblogPost from '../tuberia-module-metaweblog';
+import {groupMeta} from 'tuberia-metadata-module';
+import inlineCss from 'tuberia-inlinecss-module';
+import * as metaweblog from 'tuberia-metaweblog-module';
 import adaptDate from '../md2sp-module-adaptdate';
-import where from '../tuberia-module-where';
+import {where} from 'tuberia-flowcontrol-module';
 import saveResults from './save-results';
 import printResults from './print-results';
 import dump from 'tuberia-debug-module';
@@ -18,7 +18,7 @@ export default function makePost() {
   return pipeline('Make Post',
     readFiles((d,c) => c.argv._[0]),
     getFrontmatter,
-    markdown(),
+    markdown().highlight(),
     inlineCss((d,c) => d.meta.cssFile || c.config.cssFile),
     adaptDate(),
     dump(),

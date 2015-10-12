@@ -1,6 +1,6 @@
 {
   "name": "md2sp",
-  "version": "0.10.0",
+  "version": "1.0.0-alpha",
   "description": "Takes a markdown + TOML file and posts it to a MetaWeblog API blog.",
   "main": "index.js",
   "bin": {
@@ -28,22 +28,17 @@
   "author": "Colin Bate <colin@colinbate.com>",
   "license": "MIT",
   "dependencies": {
-    "agentkeepalive": "~0.1.5",
-    "async": "~0.2.9",
-    "cheerio": "~0.12.1",
-    "css-parse": "~1.5.2",
     "file-oath": "^1.0.0",
-    "httpreq": "~0.3.4",
-    "path-is-absolute": "^1.0.0",
-    "pify": "^2.2.0",
-    "prompt": "^0.2.14",
     "tuberia-commandline-module": "^1.0.0-rc.1",
     "tuberia-core": "^1.0.0-rc.1",
     "tuberia-debug-module": "^1.0.0-rc.1",
+    "tuberia-flowcontrol-module": "^0.1.0",
+    "tuberia-inlinecss-module": "^0.1.0",
+    "tuberia-io-module": "^0.1.0",
     "tuberia-markdown-module": "^0.1.0",
-    "tuberia-toml-module": "^1.0.0-rc.1",
-    "xml2js": "~0.4.4",
-    "yargs": "^3.15.0"
+    "tuberia-metadata-module": "^0.1.0",
+    "tuberia-metaweblog-module": "0.1.0-rc.1",
+    "tuberia-toml-module": "^1.0.0-rc.1"
   },
   "devDependencies": {
     "babel": "^5.8.23",
