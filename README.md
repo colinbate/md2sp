@@ -1,3 +1,5 @@
+> ## Moved to https://github.com/colinbate/md2sp
+
 # Markdown 2 Sharepoint
 
 Takes documents with TOML front matter and markdown content and posts them to a Sharepoint blog (or other MetaWeblog API blog). I've tested it with Sharepoint 2010, Sharepoint 2013 and Wordpress 4.0 but it should work with others. Supports normal API authentication as well as NTLM authentication.
