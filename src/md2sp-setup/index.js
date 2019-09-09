@@ -2,7 +2,7 @@ import pipeline from 'tuberia-core';
 
 let checkAccess = pipeline('Check Access'
   //resolveUrl(),
-  //metaweblogGetUsersBlogs()
+  //metaweblog.getBlog().failSilently()
 );
 
 export default function setup() {
