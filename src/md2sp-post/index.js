@@ -22,7 +22,7 @@ export default function makePost() {
     inlineCss((d,c) => d.meta.cssFile || c.config.cssFile),
     adaptDate(),
     dump(),
-    //metaweblogPost(),
+    //metaweblog.post(),
     where(x => x.meta.isNew, saveResults(getFrontmatter, toml.generate('+++'))),
     printResults()
   );
